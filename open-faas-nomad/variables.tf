@@ -43,7 +43,7 @@ variable "azs" {
 }
 
 variable "alb_subnets" {
-  default = ["192.168.1.0/16", "192.168.2.0/16", "192.168.3.0/16"]
+  default = ["192.168.1.0/24", "192.168.2.0/24", "192.168.3.0/24"]
 }
 
 variable "instance_type" {
