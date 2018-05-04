@@ -77,7 +77,7 @@ Make the image public to be able for OpenFaas to fetch it
 
 ### Test the function
 
-    curl -X POST "${OPENFAAS_URL}function/pyfunc" -d "💣"
+    curl -X POST "${OPENFAAS_URL}/function/pyfunc" -d "💣"
 
 ### Check the UIs
 

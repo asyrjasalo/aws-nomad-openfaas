@@ -10,19 +10,19 @@ module "open-faas-nomad" {
 }
 
 output "nomad_endpoint" {
-  value = "http://${module.open-faas-nomad.nomad_alb}:4646/"
+  value = "http://${module.open-faas-nomad.nomad_alb}:4646"
 }
 
 output "openfaas_endpoint" {
-  value = "http://${module.open-faas-nomad.openfaas_alb}:8080/"
+  value = "http://${module.open-faas-nomad.openfaas_alb}:8080"
 }
 
 output "grafana_endpoint" {
-  value = "http://${module.open-faas-nomad.openfaas_alb}:3000/"
+  value = "http://${module.open-faas-nomad.openfaas_alb}:3000"
 }
 
 output "prometheus_endpoint" {
-  value = "http://${module.open-faas-nomad.openfaas_alb}:9090/"
+  value = "http://${module.open-faas-nomad.openfaas_alb}:9090"
 }
 
 output "vpc_id" {
