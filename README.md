@@ -5,9 +5,7 @@ This is **bare-bones**, lacking everything extra and most notably:
   - No https:// for OpenFaas and Nomad (maybe use an API gateway?)
   - Terraform remote state locking (use e.g. [terragrunt](https://github.com/gruntwork-io/terragrunt))
 
-Forked and fixed from [terraform-aws-open-faas-nomad](https://github.com/nicholasjackson/terraform-aws-open-faas-nomad).
-
-Proper `faas.hcl` using [faas-nomad/nomad_job_files/faas.hcl](https://github.com/hashicorp/faas-nomad/blob/master/nomad_job_files/faas.hcl) as a base.
+Forked and fixed from [terraform-aws-open-faas-nomad](https://github.com/nicholasjackson/terraform-aws-open-faas-nomad), `faas.hcl` using [faas-nomad/nomad_job_files/faas.hcl](https://github.com/hashicorp/faas-nomad/blob/master/nomad_job_files/faas.hcl) as the base.
 
 
 Setup
