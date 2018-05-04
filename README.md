@@ -11,7 +11,7 @@ Forked and fixed from [terraform-aws-open-faas-nomad](https://github.com/nichola
 Setup
 -----
 
-### 1. Set Environment variables for AWS
+### 1. Export the AWS environment variables
 
     export AWS_ACCESS_KEY_ID={{aws_access_key_id}}
     export AWS_SECRET_ACCESS_KEY={{aws_secret_access_key}}
@@ -19,7 +19,7 @@ Setup
 
 Tip: Prefer [aws-vault](https://github.com/99designs/aws-vault) to store these safely.
 
-### 2. Install Nomad and faas-cli
+### 2. Install command-line tools
 
     brew install faas-cli
     brew install nomad
@@ -27,16 +27,16 @@ Tip: Prefer [aws-vault](https://github.com/99designs/aws-vault) to store these s
 
 Tip: On GNU\Linux, try [linuxbrew](http://linuxbrew.sh).
 
-### 3. Fetch terraform dependencies
+### 3. Fetch the Terraform module deps
 
     terraform init
 
-### 4. Plan and apply (the region is asked)
+### 4. Plan and apply - the region is asked
 
     terraform plan
     terraform apply
 
-### 5. Launch OpenFaaS using Nomad
+### 5. Launch OpenFaaS in Nomad
 
     export NOMAD_ADDR=$(terraform output nomad_endpoint)
     nomad run faas.hcl
@@ -45,16 +45,18 @@ Tip: On GNU\Linux, try [linuxbrew](http://linuxbrew.sh).
 Functions
 ---------
 
-### Deploy functions to OpenFaaS
+### Let's try out some functions next
 
     export OPENFAAS_URL=$(terraform output openfaas_endpoint)
     cd functions
 
-### Create a new function (already done)
+### Create a new function
 
-Language can be given as `dockerfile` to run any Docker container:
+Argument `lang` can be `dockerfile`, to run any Docker container as a function:
 
     faas-cli new -lang python3 pyfunc
+
+I already committed this to the repository.
 
 Change `image` in `.yml` to include username for [DockerHub](https://hub.docker.com), or prepend the private Docker registry url.
 
@@ -62,7 +64,7 @@ Change `image` in `.yml` to include username for [DockerHub](https://hub.docker.
 
     faas-cli build -f pyfunc.yml
 
-### Push it to Docker registry
+### Push Docker image to Docker registry
 
     faas-cli push -f pyfunc.yml
 
