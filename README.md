@@ -56,7 +56,7 @@ Language can be given as `dockerfile` to run any Docker container:
 
     faas-cli new -lang python3 pyfunc
 
-Change `image` in `.yml` to include username for [DockerHub](https://hub.docker.com, or prepend the private Docker registry url.
+Change `image` in `.yml` to include username for [DockerHub](https://hub.docker.com), or prepend the private Docker registry url.
 
 ### Build the Docker image
 
