@@ -17,7 +17,9 @@ Setup
     export AWS_SECRET_ACCESS_KEY={{aws_secret_access_key}}
     export AWS_SESSION_TOKEN={{aws_session_token}}
 
-Tip: Prefer [aws-vault](https://github.com/99designs/aws-vault) to store these in keyrings (OS X, Linux distros).
+Tip: Prefer [aws-vault](https://github.com/99designs/aws-vault) to store
+`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in some keyring
+(on OS X, Linux distros).
 
 ### 2. Install the command-line tools
 
