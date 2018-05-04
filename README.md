@@ -2,7 +2,7 @@ OpenFaas in Nomad cluster on AWS
 ================================
 
 This is **bare-bones**, lacking everything extra and most notably:
-  - No https:// for OpenFaas and Nomad (maybe use an API gateway?)
+  - No https:// for OpenFaas and Nomad (TODO: maybe use an API Gateway?)
   - Terraform remote state locking (use e.g. [terragrunt](https://github.com/gruntwork-io/terragrunt))
 
 Forked and fixed from [terraform-aws-open-faas-nomad](https://github.com/nicholasjackson/terraform-aws-open-faas-nomad), `faas.hcl` using [faas-nomad/nomad_job_files/faas.hcl](https://github.com/hashicorp/faas-nomad/blob/master/nomad_job_files/faas.hcl) as the base.
@@ -38,28 +38,46 @@ Setup
 
 ### 5. Launch OpenFaaS using Nomad
 
-    export NOMAD_URL=$(terraform output nomad_endpoint)
+    export NOMAD_ADDR=$(terraform output nomad_endpoint)
     nomad run faas.hcl
 
 
-Usage
------
+Functions
+---------
 
 ### Deploy functions to OpenFaaS
 
     export OPENFAAS_URL=$(terraform output openfaas_endpoint)
     cd functions
-    #faas-cli new -lang python3 pyfunc
-    faas-cli build -f pyfunc.yml
-    faas-cli deploy --gateway=$OPENFAAS_URL -f pyfunc.yml
 
-    Language can be given as `dockerfile` to run any Docker container.
+### Create a new function (already done)
+
+Language can be given as `dockerfile` to run any Docker container:
+
+    faas-cli new -lang python3 pyfunc
+
+Change `image` in `.yml` to include username for [DockerHub](https://hub.docker.com, or prepend the private Docker registry url.
+
+### Build the Docker image
+
+    faas-cli build -f pyfunc.yml
+
+### Push it to Docker registry
+
+    faas-cli push -f pyfunc.yml
+
+Make the image public to be able for OpenFaas to fetch it
+(TODO: have some privacy)
+
+### Deploy to OpenFaaS
+
+    faas-cli deploy --gateway=$OPENFAAS_URL -f pyfunc.yml
 
 ### Test the function
 
-    curl -X POST $OPENFAAS_URL/function/pyfunc -d "💣"
+    curl -X POST "${OPENFAAS_URL}function/pyfunc" -d "💣"
 
-### Check UIs
+### Check the UIs
 
     open $OPENFAAS_URL
     nomad ui
