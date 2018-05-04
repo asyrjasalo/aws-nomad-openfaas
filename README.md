@@ -17,7 +17,7 @@ Setup
     export AWS_SECRET_ACCESS_KEY={{aws_secret_access_key}}
     export AWS_SESSION_TOKEN={{aws_session_token}}
 
-    Tip: Prefer [aws-vault](https://github.com/99designs/aws-vault) to store these safely.
+Tip: Prefer [aws-vault](https://github.com/99designs/aws-vault) to store these safely.
 
 ### 2. Install Nomad and faas-cli
 
@@ -25,7 +25,7 @@ Setup
     brew install nomad
     brew install terraform
 
-    Tip: On GNU\Linux, try [linuxbrew](http://linuxbrew.sh).
+Tip: On GNU\Linux, try [linuxbrew](http://linuxbrew.sh).
 
 ### 3. Fetch terraform dependencies
 
