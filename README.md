@@ -1,8 +1,8 @@
-OpenFaas in Nomad cluster on AWS
+OpenFaaS in Nomad cluster on AWS
 ================================
 
 This is **bare-bones**, lacking everything extra and most notably:
-  - No https:// for OpenFaas and Nomad (TODO: maybe use an API Gateway?)
+  - No https:// for OpenFaaS and Nomad (TODO: maybe use an API Gateway?)
   - Terraform remote state locking (use e.g. [terragrunt](https://github.com/gruntwork-io/terragrunt))
 
 Forked and fixed from [terraform-aws-open-faas-nomad](https://github.com/nicholasjackson/terraform-aws-open-faas-nomad), `faas.hcl` using [faas-nomad/nomad_job_files/faas.hcl](https://github.com/hashicorp/faas-nomad/blob/master/nomad_job_files/faas.hcl) as the base.
@@ -68,7 +68,7 @@ Change `image` in `.yml` to include username for [DockerHub](https://hub.docker.
 
     faas-cli push -f pyfunc.yml
 
-Make the image public to be able for OpenFaas to fetch it
+Make the image public to be able for OpenFaaS to fetch it
 (TODO: have some privacy)
 
 ### Deploy to OpenFaaS
