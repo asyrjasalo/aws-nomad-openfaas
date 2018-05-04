@@ -17,9 +17,9 @@ Setup
     export AWS_SECRET_ACCESS_KEY={{aws_secret_access_key}}
     export AWS_SESSION_TOKEN={{aws_session_token}}
 
-Tip: Prefer [aws-vault](https://github.com/99designs/aws-vault) to store these safely.
+Tip: Prefer [aws-vault](https://github.com/99designs/aws-vault) to store these in keyrings (OS X, Linux distros).
 
-### 2. Install command-line tools
+### 2. Install the command-line tools
 
     brew install faas-cli
     brew install nomad
@@ -45,20 +45,18 @@ Tip: On GNU\Linux, try [linuxbrew](http://linuxbrew.sh).
 Functions
 ---------
 
-### Let's try out some functions next
+### Create a new function
 
     export OPENFAAS_URL=$(terraform output openfaas_endpoint)
     cd functions
 
-### Create a new function
-
-Argument `lang` can be `dockerfile`, to run any Docker container as a function:
+I already committed this to the repository:
 
     faas-cli new -lang python3 pyfunc
 
-I already committed this to the repository.
-
 Change `image` in `.yml` to include username for [DockerHub](https://hub.docker.com), or prepend the private Docker registry url.
+
+Argument `-lang` can be `dockerfile`, to run any Docker container as a function:
 
 ### Build the Docker image
 
@@ -68,7 +66,7 @@ Change `image` in `.yml` to include username for [DockerHub](https://hub.docker.
 
     faas-cli push -f pyfunc.yml
 
-Make the image public to be able for OpenFaaS to fetch it
+Make the image public in DockerHub, to get OpenFaaS to fetch it.
 (TODO: have some privacy)
 
 ### Deploy to OpenFaaS
