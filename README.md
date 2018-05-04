@@ -1,5 +1,5 @@
-OpenFaas + Nomad cluster on AWS
-===============================
+OpenFaas in Nomad cluster on AWS
+================================
 
 This is **bare-bones**, lacking everything extra and most notably:
   - No https:// for OpenFaas and Nomad (maybe use an API gateway?)
